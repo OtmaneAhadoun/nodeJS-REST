@@ -1,0 +1,11 @@
+const express=require('express')
+const Router=require('./router/Router')
+const mongoose=require('mongoose')
+require('dotenv').config()
+const app=express()
+app.use(express.urlencoded({extended:false}))
+app.use('/',Router)
+mongoose.connect(process.env.DB_CONNECTION)
+.then(()=>{console.log('fdsf');app.listen(8080)})
+.catch((err)=>console.log(err.message))
+
